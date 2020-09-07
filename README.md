@@ -20,7 +20,7 @@ I will have to first write a class ```KnightPathFinder``` that will initialize w
 ### License Information
 
 ```
-    <Knights Travails - Shortest Path for Chess Knight on 8x8 Board>
+    Knights Travails - Shortest Path for Chess Knight on 8x8 Board
     Copyright (C) 2020  Mark Calvelo
 
     This program is free software; you can redistribute it and/or modify
