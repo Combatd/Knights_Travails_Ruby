@@ -13,6 +13,17 @@ This pathfinder algorithm looks very similar to word chains!
 
 I will have to first write a class ```KnightPathFinder``` that will initialize with a ```start_pos``` starting position.
 
+Moves can be represented as a tree. The values in the tree are positions. A node is a child of a nother node if you can move from the parent to the child position. ```PolyTreeNode``` instances will represent each position.
+
+The instance variable ```@root_node``` stores the knight's initial position in an instance of ```PolyTreeNode``` class.
+
+```KnightPathFinder#build_move_tree``` will build the move tree, which begins with ```self.root_node```. I will need to invoke ```#build_move_tree``` in ```initialize```. We traverse the move tree whenever we invoke ```#find_path```.
+
+### Phase 1: #new_move_positions
+Before building ```#build_move_tree```, I need to find positions I can move to from a given position. A class method ```KnightPathFinder::valid_moves(pos)``` will check for up to 8 possible moves.
+
+We don't want repating positions in the move tree. For example, we won't move constantly between the same two positions (infinite cycling), so we need an instance variable ```@considered_positions``` to keep track of the positions considered. We can initialize that to the array containing the starting position. The instance method ```KnightPathFinder#new_move_positions(pos)``` should call the ```::valid_moves``` class method, while filtering out any positions in the ```@considered_positions```. Then, it should add remaining new positions to ```@considered_positions``` and return these new positions.
+
 ### License Information
 
 ```
