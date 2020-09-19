@@ -25,4 +25,11 @@ class KnightPathFinder
         new_moves.reject { |ele| ele.nil? } # filter nil values from new_moves and return
     end
 
+    def new_move_positions(pos)
+        # Slice all moves that are valid moves into new_positions array
+        new_positions = KnightPathFinder.valid_moves(pos).select { |position| !@considered_positions.include?(position) }
+        @considered_positions += new_positions # append new positions to the @considered_positions instance variable
+        return new_positions
+    end
+
 end
