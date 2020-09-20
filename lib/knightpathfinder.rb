@@ -36,7 +36,7 @@ class KnightPathFinder
        queue = [@root_node] # instance variable is the first element of the queue
        
        until queue.empty? # while queue still has at least one element
-        current_node = queue.shift # currente_node splice out the first element of queue
+        current_node = queue.shift # current_node splice out the first element of queue
         new_move_positions(current_node.value).each do |new_positions|
             child_node = PolyTreeNode.new(new_position) # instantiate child_node
             current_node.add_child(child_node) # set child_node.parent to current_node
@@ -48,6 +48,17 @@ class KnightPathFinder
     def find_path(end_pos)
         end_node = @root_node.dfs(end_pos) # use dfs to search for end_pos in the move tree
         # trace_path_back will be invoked and return a value here
+    end
+
+    def trace_path_back(end_node)
+        path = [] # hold all nodes in the backwards path in an array
+        current_node = end_node # start at the end_node
+        until current_node.nil? # while current_node is not a nil value (has a parent to go up)
+            path << current_node # push the current_node in the path array
+            current_node = current_node.parent # go up the tree to the parent (if there is still one more level up)
+        end
+
+        path.reverse # return the path array in order from start to end
     end
 
 end
