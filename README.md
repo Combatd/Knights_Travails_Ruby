@@ -24,6 +24,13 @@ Before building ```#build_move_tree```, I need to find positions I can move to f
 
 We don't want repating positions in the move tree. For example, we won't move constantly between the same two positions (infinite cycling), so we need an instance variable ```@considered_positions``` to keep track of the positions considered. We can initialize that to the array containing the starting position. The instance method ```KnightPathFinder#new_move_positions(pos)``` should call the ```::valid_moves``` class method, while filtering out any positions in the ```@considered_positions```. Then, it should add remaining new positions to ```@considered_positions``` and return these new positions.
 
+### Phase 2: #build_move_tree
+```#build_move_tree``` will use ```#new_move_positions``` instance method.
+
+THe move tree will represent ONLY the shortest path to a given position on the board, so the tree will be built using breadth-first search. Looking at a BFS Algorithm, we use a queue to process nodes in "First In, First Out" order. I will start with a root node representing the ```start_pos``` and explore moves from one position at a time.
+
+After that, I can build nodes representing positions one move away, then add them to the queue. Then I would take the next node from the queue until the queue is empty.
+
 ### License Information
 
 ```
