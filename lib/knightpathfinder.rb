@@ -54,7 +54,7 @@ class KnightPathFinder
         path = [] # hold all nodes in the backwards path in an array
         current_node = end_node # start at the end_node
         until current_node.nil? # while current_node is not a nil value (has a parent to go up)
-            path << current_node # push the current_node in the path array
+            path << current_node.value # push the current_node value property in the path array
             current_node = current_node.parent # go up the tree to the parent (if there is still one more level up)
         end
 
@@ -63,5 +63,6 @@ class KnightPathFinder
 
 end
 
+# Test case
 kpf = KnightPathFinder.new([0, 0])
-kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
+print kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
