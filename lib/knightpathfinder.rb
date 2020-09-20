@@ -32,4 +32,17 @@ class KnightPathFinder
         return new_positions
     end
 
+    def build_move_tree
+       queue = [@root_node] # instance variable is the first element of the queue
+       
+       until queue.empty? # while queue still has at least one element
+        current_node = queue.shift # currente_node splice out the first element of queue
+        new_move_positions(current_node.value).each do |new_positions|
+            child_node = PolyTreeNode.new(new_position) # instantiate child_node
+            current_node.add_child(child_node) # set child_node.parent to current_node
+            queue << child_node # push child_node into the end of the queue
+        end
+       end
+    end
+
 end
