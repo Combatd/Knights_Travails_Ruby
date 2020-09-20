@@ -31,6 +31,22 @@ THe move tree will represent ONLY the shortest path to a given position on the b
 
 After that, I can build nodes representing positions one move away, then add them to the queue. Then I would take the next node from the queue until the queue is empty.
 
+### Phase 3: #find_path
+The move tree stored in ```@root_node``` is our internal data structure, and we can traverse it to find the shortest path to any position on our 8x8 board from the original ```@start_pos```.
+
+I will need to create instance method ```KnightPathFinder#find_path(end_pos)``` to search for ```end_pos``` in the move tree. I can use either ```dfs``` or ```bfs``` to do it, but I will use ```dfs``` in my implementation. ```#find_path(end_pos)``` will return the tree node instance of ```PolyTreeNode``` that contains ```end_pos```.
+
+After returning the node that contains ```end_pos```,  it is time to define a method ```#trace_path_back``` on ```KnightPathFinder```. This will trace back from the node to the ```@root_node``` using ```PolyTreeNode#parent```. It will add each value to an array as it goes up toward the root. ```#trace_path_back``` should return the values in order, from the start position to the end position, so I may have to ```Array.reverse``` on its return.
+
+```#trace_path_back``` will be the final line of ```#find_path``` to return a value.
+
+### Tests that can be run in a REPL
+```
+kpf = KnightPathFinder.new([0, 0])
+kpf.find_path([7, 6]) # => [[0, 0], [1, 2], [2, 4], [3, 6], [5, 5], [7, 6]]
+kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
+```
+
 ### License Information
 
 ```
