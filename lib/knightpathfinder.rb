@@ -10,7 +10,7 @@ class KnightPathFinder
         @root_node = PolyTreeNode.new(start_pos)
         @considered_positions = [start_pos]
 
-        # build_move_tree will be needed here
+        build_move_tree
     end
 
     def self.valid_moves(pos)
