@@ -45,4 +45,9 @@ class KnightPathFinder
        end
     end
 
+    def find_path(end_pos)
+        end_node = @root_node.dfs(end_pos) # use dfs to search for end_pos in the move tree
+        # trace_path_back will be invoked and return a value here
+    end
+
 end
