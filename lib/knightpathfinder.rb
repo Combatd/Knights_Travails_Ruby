@@ -37,7 +37,7 @@ class KnightPathFinder
        
        until queue.empty? # while queue still has at least one element
         current_node = queue.shift # current_node splice out the first element of queue
-        new_move_positions(current_node.value).each do |new_positions|
+        new_move_positions(current_node.value).each do |new_position|
             child_node = PolyTreeNode.new(new_position) # instantiate child_node
             current_node.add_child(child_node) # set child_node.parent to current_node
             queue << child_node # push child_node into the end of the queue
@@ -62,3 +62,6 @@ class KnightPathFinder
     end
 
 end
+
+kpf = KnightPathFinder.new([0, 0])
+kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
