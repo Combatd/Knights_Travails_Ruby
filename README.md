@@ -27,7 +27,7 @@ We don't want repating positions in the move tree. For example, we won't move co
 ### Phase 2: #build_move_tree
 ```#build_move_tree``` will use ```#new_move_positions``` instance method.
 
-THe move tree will represent ONLY the shortest path to a given position on the board, so the tree will be built using breadth-first search. Looking at a BFS Algorithm, we use a queue to process nodes in "First In, First Out" order. I will start with a root node representing the ```start_pos``` and explore moves from one position at a time.
+The move tree will represent ONLY the shortest path to a given position on the board, so the tree will be built using breadth-first search. Looking at a BFS Algorithm, we use a queue to process nodes in "First In, First Out" order. I will start with a root node representing the ```start_pos``` and explore moves from one position at a time.
 
 After that, I can build nodes representing positions one move away, then add them to the queue. Then I would take the next node from the queue until the queue is empty.
 
